@@ -22,8 +22,8 @@ class HomeController extends Controller
                 $schedules = Schedule::where('event_id',$event_id)->get();
                 
                 foreach($schedules as $schedule){
-                    $data[] = array('event_name'=>$event_name,'start_time'=>$schedule->start_time,
-                    'end_time'=>$schedule->end_time);
+                    $data[] = array('title'=>$event_name,'start'=>$schedule->start_time,
+                    'end'=>$schedule->end_time);
                 }
             }
             return view('auth.home')->with('data',$data);

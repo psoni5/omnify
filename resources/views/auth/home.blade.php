@@ -2,6 +2,13 @@
 <html>
 <head>
 <title>home</title>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
 #customers {
@@ -28,10 +35,10 @@
 }
 </style>
 </head>
-<body>
+<body style="background-color:coral;">
 <nav class="navbar navbar-light navbar-expand-lg mb-5" style="background-color: #e3f2fd;">
 <div class="container">
-<a class="navbar-brand mr-auto" href="#">GetOmnify</a>
+<a class="navbar-brand mr-auto" style="margin-left:0px" href="#">GetOmnify</a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
@@ -47,10 +54,10 @@ aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 </li>
 @else
 <li class="nav-item">
-<a class="nav-link" href="{{ route('signout') }}">Logout</a>
+<a class="btn btn-primary" href="{{ route('event') }}"style="margin-left:30px" >Add Event</a>
 </li>
-<li class="nav-item">
-<a class="nav-link" href="{{ route('event') }}">Add Event</a>
+<li class="nav-item" >
+<a class="btn btn-primary" href="{{ route('signout') }}" style="margin-left:800px">Logout</a>
 </li>
 @endguest
 </ul>
@@ -59,23 +66,25 @@ aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 </nav>
 <!-- @yield('content') -->
 
-<h1> Scheduled Table</h1>
 
-<table id="customers">
-  <tr>
-    <th>Event Name</th>
-    <th>Start Time</th>
-    <th>End Time</th>
-  </tr>
-  
-    @foreach($data as $d)
-    <tr>
-    <td>{{$d['event_name']}}</td>
-    <td>{{$d['start_time']}}</td>
-    <td>{{$d['end_time']}}</td>
-  </tr>
-        
-    @endforeach
-    
+    <div class="container">
+<div id="calendar"></div></div>
+    <script>
+
+$(document).ready(function () {
+    var event = @json($data);
+    //console.log(event);
+    var calendar = $('#calendar').fullCalendar({
+        header:{
+            left:'prev,next today',
+            center:'title',
+            right:'month,agendaWeek,agendaDay'
+        },
+        events:event
+    });  
+
+});
+
+</script>
 </body>
 </html>

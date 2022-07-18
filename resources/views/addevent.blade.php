@@ -1,4 +1,5 @@
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -7,11 +8,16 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script>
   $(function () {
-    $('#datetimepicker1').datetimepicker({format: 'LT',format: 'hh:mm:ss'});
-	$('#datetimepicker2').datetimepicker({format: 'LT',format: 'hh:mm:ss'});
+    $('#datetimepicker1').datetimepicker({format: 'LT',format: 'HH:mm:ss' });
+	$('#datetimepicker2').datetimepicker({format: 'LT',format: 'HH:mm:ss'});
  });
 </script>
-<div class="container" style="padding-top:100px">
+
+
+
+<a class="btn btn-primary" href="/home" style="margin-top:30;margin-left:60">Back</a>
+<a class="btn btn-primary" href="/signout" style="margin-top:30;margin-left:900">Logout</a>
+<div class="container" style="padding-top:80px">
   <div class="panel panel-primary">
     <div class="panel-heading">Schedule an Event</div>
 	<form name="form1"  method="POST" action="{{ route('addevent') }}">
@@ -37,7 +43,7 @@
                <div class="form-group">
                   <label class="control-label">Start Time</label>
                   <div class='input-group date' id='datetimepicker1'>
-                     <input type='text'  name="start_time" required autofocus class="form-control" />
+                     <input type='text'  name="start_time" required   class="form-control"  />
                      <span class="input-group-addon">
                      <span class="glyphicon glyphicon-calendar"></span>
                      </span>

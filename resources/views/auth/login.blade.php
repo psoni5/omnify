@@ -16,15 +16,11 @@
      <h4>GetOmnify <span>Dashboard</span></h4>
       <h5 style=" margin-bottom: 0px;">Sign in to your account.</h5>
       
-        <input type="text" name="email" placeholder="Email" autocomplete="off" required autofocus>
-        @if ($errors->has('email'))
-            <span class="text-danger">{{ $errors->first('email') }}</span>
-        @endif
+        <input type="text" name="email" placeholder="Email"  required autofocus>
+        
         <i class="typcn typcn-eye" id="eye"></i>
         <input type="password" name="password" placeholder="Passsword" required id="pwd" autocomplete="off">
-        @if ($errors->has('password'))
-            <span class="text-danger">{{ $errors->first('password') }}</span>
-        @endif
+        
         <!-- <label>
           <input type="checkbox">
           <span></span>
